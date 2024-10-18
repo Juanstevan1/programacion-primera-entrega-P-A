@@ -7,17 +7,15 @@ class ProductService:
     @staticmethod
     def create_product(data):
         try:
-            # Convertimos el valor del precio a Decimal
             price = Decimal(data.get('price'))
         except InvalidOperation:
-            # Si hay un error en la conversión, lanzamos una excepción o manejamos el error
             raise ValueError("El valor del precio no es válido. Por favor, introduce un número válido.")
         
         product = Product.objects.create(
             name=data.get('name'),
             color=data.get('color'),
             size=data.get('size'),
-            price=price  # Usamos el precio convertido a Decimal
+            price=price 
         )
         return product
 

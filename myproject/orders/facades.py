@@ -8,9 +8,6 @@ class OrderFacade:
         self.cart = cart
 
     def place_order(self):
-        """
-        Llamamos al servicio para crear la orden
-        """
         if not self.cart:
             raise ValueError("El carrito está vacío")
         
@@ -18,15 +15,9 @@ class OrderFacade:
         return order
 
     def get_user_orders(self):
-        """
-        Recupera todas las órdenes de un usuario.
-        """
         return Order.objects.filter(user=self.user)
     
     def get_user_orders_with_prices(self):
-        """
-        Devuelve las órdenes con los precios calculados para el usuario.
-        """
         orders = self.get_user_orders()
         orders_with_prices = []
 

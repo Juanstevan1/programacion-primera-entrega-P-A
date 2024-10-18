@@ -12,7 +12,6 @@
         <form method="POST" class="needs-validation" novalidate>
             {% csrf_token %}
             
-            <!-- Muestra los errores generales del formulario -->
             {% if form.non_field_errors %}
                 <div class="alert alert-danger">
                     <ul>
@@ -24,7 +23,6 @@
             {% endif %}
             
             <div class="form-group">
-                <!-- Renderiza los campos del formulario y los errores -->
                 {{ form.as_p }}
             </div>
 
