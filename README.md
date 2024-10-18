@@ -30,7 +30,7 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
 ### 1. Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/myproject.git
+git clone https://github.com/Juanstevan1/programacion-primera-entrega-P-A
 cd myproject
 ```
 
@@ -50,13 +50,7 @@ source venv/bin/activate
 
 ### 3. Instalar las Dependencias
 
-Asegúrate de tener un archivo `requirements.txt` con las dependencias necesarias. Si no lo tienes, puedes crearlo con el siguiente contenido:
-
-```bash
-Django>=3.0,<4.0
-```
-
-Luego, instala las dependencias:
+instala las dependencias:
 
 ```bash
 pip install -r requirements.txt
