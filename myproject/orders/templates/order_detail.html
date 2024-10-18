@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Orden</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Detalles de la Orden</h1>
+        <p><strong>ID de la Orden:</strong> {{ order.id }}</p>
+        <p><strong>Usuario:</strong> {{ order.user.id }}</p>
+        <p><strong>Email del Usuario:</strong> {{ order.user.email }}</p>
+        <p><strong>Fecha de Creación:</strong> {{ order.created_at|date:"M d, Y, h:i a" }}</p>
+        <p><strong>Total:</strong> ${{ total_price|floatformat:2 }}</p>
+
+        <h2>Productos:</h2>
+        <ul>
+            {% for item in products_with_prices %}
+                <li>{{ item.product.name }} - Precio Original: <span style="text-decoration: line-through;">${{ item.product.price|floatformat:2 }}</span>, Tu Precio: ${{ item.user_price|floatformat:2 }}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

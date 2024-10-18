@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Carrito de Compras</h2>
+
+    {% if products %}
+        <h2>Tu Carrito</h2>
+        <ul class="list-group mb-3">
+            {% for item in products %}
+            <li class="list-group-item">
+                <h3>{{ item.product.name }}</h3>
+                <!-- Mostrar el precio original -->
+                Precio Original: <span style="text-decoration: line-through;">${{ item.product.price }}</span><br>
+                <!-- Mostrar el precio con descuento -->
+                Tu Precio: <strong>${{ item.user_price }}</strong>
+            </li>
+            {% endfor %}
+        </ul>
+        <h4>Total a pagar: ${{ total_price }}</h4>
+
+        <a href="{% url 'create_order' %}" class="btn btn-primary">Crear Orden</a>
+    {% else %}
+        <p>Tu carrito está vacío.</p>
+    {% endif %}
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

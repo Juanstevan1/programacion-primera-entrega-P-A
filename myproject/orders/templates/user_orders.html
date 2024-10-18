@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órdenes de {{ user.username }}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Órdenes de {{ user.username }}</h1>  <!-- Mostrar el nombre del usuario -->
+        <p><strong>Email del Usuario:</strong> {{ user.email }}</p>  <!-- Mostrar el email del usuario -->
+
+        <h2>Lista de Órdenes</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID de la Orden</th>
+                    <th>Fecha de creación</th>
+                    <th>Total</th>
+                    <th>Productos</th>
+                    <th>Acciones</th>  <!-- Columna para el botón de detalles -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders_with_prices %}
+                    <tr>
+                        <td>{{ order.order.id }}</td>
+                        <td>{{ order.order.created_at|date:"M d, Y, h:i a" }}</td>
+                        <td>${{ order.total_price }}</td> <!-- Precio total ajustado -->
+                        <td>
+                            <ul>
+                                {% for item in order.products_with_prices %}
+                                    <li>{{ item.product.name }} - 
+                                        <!-- Mostrar el precio original tachado y el precio ajustado -->
+                                        <span style="text-decoration: line-through;">${{ item.product.price }}</span> - ${{ item.user_price }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="{% url 'order_detail' order.order.id %}" class="btn btn-info">Ver Detalles</a>
+                        </td>  <!-- Botón para ver detalles de la orden -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

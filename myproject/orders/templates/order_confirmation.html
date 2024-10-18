@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Order Confirmation</h1>
+        
+        {% if message %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+
+        {% if order %}
+            <p><strong>Order ID:</strong> {{ order.id }}</p>
+            <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+
+            <h3>Products:</h3>
+            <ul>
+                {% for product in order.products.all %}
+                    <li>{{ product.name }} - ${{ product.price }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No order information available.</p>
+        {% endif %}
+
+        <!-- Botones para navegar -->
+        <a href="{% url 'product_list' %}" class="btn btn-primary mt-3">Volver a la lista de productos</a>
+        <a href="{% url 'user_orders' %}" class="btn btn-secondary mt-3">Ver mis órdenes</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

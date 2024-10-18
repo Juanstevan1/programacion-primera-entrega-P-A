@@ -1,0 +1,27 @@
+<!-- templates/products/product_price.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precio del Producto</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Precio del Producto</h1>
+            </div>
+            <div class="card-body">
+                <p><strong>Nombre del Producto:</strong> {{ product.name }}</p>
+                <p><strong>Precio Calculado:</strong> ${{ price }}</p>
+                <a href="{% url 'create_product' %}" class="btn btn-primary">Crear otro producto</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
